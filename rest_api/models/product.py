@@ -17,6 +17,7 @@ class ProductProduct(models.Model):
         if not product.image_1920:
             image_url = ""
         else:
+            base_url = 'http://192.168.1.7:8069/'
             try:
                 image_url = base_url + 'web/image?model=' + self._name + '&id=' + str(
                     product.id) + '&field=' + 'image_1920' + '&session_id=' + http.request.session.sid
@@ -36,8 +37,9 @@ class ProductProduct(models.Model):
                 {
                 'id' : product.id,
                 'name' : product.name, 
-                'image' : self.get_image_url(product.id)
-                
+                'image' : self.get_image_url(product.id),
+                'price' : product.list_price,
+                'qty_available': int(product.qty_available)
                 } for product in product_ids ]
         else :
             product_ids = self.search([])
@@ -45,45 +47,47 @@ class ProductProduct(models.Model):
                 {
                 'id' : product.id,
                 'name' : product.name, 
-                'image' : self.get_image_url(product.id)
+                'image' : self.get_image_url(product.id),
+                'price' : product.list_price,
+                'qty_available': int(product.qty_available)
                 } for product in product_ids ]
 
-    # def api_edit_parent(self, parent_id, body):
-    #     parent_id = self.search([('id','=',parent_id)])
-    #     if not parent_id:
-    #             return [{'error': {
-    #                     'code': 401, 'message': 'ID tidak ditemukan!'
-    #                     }}]
-    #     vals = body.get('data', False)
-    #     parent_id.write(vals)
-    #     message = "Parent %s was successfully edited" % (
-    #         parent_id.name)
-    #     return {'message' : message}
+    def api_edit_product(self, product_id, body):
+        product_id = self.search([('id','=',product_id)])
+        if not product_id:
+                return [{'error': {
+                        'code': 401, 'message': 'ID tidak ditemukan!'
+                        }}]
+        vals = body.get('data', False)
+        product_id.write(vals)
+        message = "product %s was successfully edited" % (
+            product_id.name)
+        return {'message' : message}
 
-    # def api_post_parent(self, body):
-    #     new_parent = body.get('data', False)
-    #     if new_parent:
-    #         try:
-    #             parent_id = self.create(new_parent)
-    #         except Exception:
-    #             raise RestException(
-    #                 400, "Invalid parameters to Create New Teacher")
-    #     return {
-    #         "parent_id": parent_id.id,
-    #         "name" : parent_id.name,
-    #         "gender" : parent_id.gender,
-    #         "email" : parent_id.email,
-    #         "phone" : parent_id.phone
-    #     }
+    def api_post_product(self, body):
+        new_product = body.get('data', False)
+        if new_product:
+            try:
+                product_id = self.create(new_product)
+            except Exception:
+                raise RestException(
+                    400, "Invalid parameters to Create New Teacher")
+        return {
+            "product_id": product_id.id,
+            "name" : product_id.name,
+            "type" : product_id.type,
+            "categ" : product_id.categ_id.name,
+            "price" : product_id.list_price
+        }
 
-    # def api_delete_parent(self, parent_id):
-    #     parent_id = self.search([('id', '=', parent_id)])
-    #     if not parent_id:
-    #             return [{'error': {
-    #                     'code': 401, 'message': 'ID tidak ditemukan!'
-    #                     }}]
-    #     parent_name = parent_id.name
-    #     parent_id.unlink()
-    #     message = "Teacher %s was successfully deleted" % (
-    #         parent_name)
-    #     return {'message' : message}
+    def api_delete_product(self, product_id):
+        product_id = self.search([('id', '=', product_id)])
+        if not product_id:
+                return [{'error': {
+                        'code': 401, 'message': 'ID tidak ditemukan!'
+                        }}]
+        product_name = product_id.name
+        product_id.unlink()
+        message = "Product %s was successfully deleted" % (
+            product_name)
+        return {'message' : message}

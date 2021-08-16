@@ -16,33 +16,33 @@ class ApiProduct(http.Controller):
         result['result'] = product
         return result
 
-    # @route('/api/v1/parent/<int:parent_id>', methods=['PUT'], type='json', auth='public', csrf=False)
+    @route('/api/v1/product/<int:product_id>', methods=['PUT'], type='json', auth='public', csrf=False)
     # @token_required()
-    # def edit_parent(self, parent_id, **kwargs):
-    #     body = request.jsonrequest
-    #     result = request.env['parent.parent'].with_user(
-    #         kwargs.get('uid', 1)).api_edit_parent(
-    #         parent_id, body)
-    #     code = 201
-    #     if type(result) == list:
-    #         code = 401
-    #     return {'result': result, 'code': code}
+    def edit_product(self, product_id, **kwargs):
+        body = request.jsonrequest
+        result = request.env['product.product'].with_user(
+            kwargs.get('uid', 1)).api_edit_product(
+            product_id, body)
+        code = 201
+        if type(result) == list:
+            code = 401
+        return {'result': result, 'code': code}
 
-    # @route('/api/v1/parent', methods=['POST'], type='json', auth='public', csrf=False)
+    @route('/api/v1/product', methods=['POST'], type='json', auth='public', csrf=False)
     # @token_required()
-    # def post_parent(self, **kwargs):
-    #     body = request.jsonrequest
-    #     result = request.env['parent.parent'].with_user(
-    #         kwargs.get('uid', 1)).api_post_parent(body)
-    #     return {'result': result, 'code': 201}
+    def post_product(self, **kwargs):
+        body = request.jsonrequest
+        result = request.env['product.product'].with_user(
+            kwargs.get('uid', 1)).api_post_product(body)
+        return {'result': result, 'code': 201}
 
-    # @route('/api/v1/parent/<int:parent_id>', methods=['DELETE'], type='json', auth='public', csrf=False)
+    @route('/api/v1/product/<int:product_id>', methods=['DELETE'], type='json', auth='public', csrf=False)
     # @token_required()
-    # def delete_parent(self, parent_id, **kwargs):
-    #     result = request.env['parent.parent'].with_user(
-    #         kwargs.get('uid', 1)).api_delete_parent(
-    #         parent_id)
-    #     code = 201
-    #     if type(result) == list:
-    #         code = 401
-    #     return {'result': result, 'code': code}
+    def delete_product(self, product_id, **kwargs):
+        result = request.env['product.product'].with_user(
+            kwargs.get('uid', 1)).api_delete_product(
+            product_id)
+        code = 201
+        if type(result) == list:
+            code = 401
+        return {'result': result, 'code': code}
