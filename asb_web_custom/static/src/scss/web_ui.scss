@@ -1,0 +1,31 @@
+// home menu background screen
+.o_home_menu_background {
+    background: url(/asb_web_custom/static/src/img/ff7_animate.jpg);
+    background-size: 100% 100%;
+
+    .o_database_list {
+        margin-top: 75px;
+    }
+
+    #login, #password {
+        color: cyan;
+    }
+    label {
+        color: gold;
+    }
+}
+
+.custom_login_background {
+    background: url(/asb_web_custom/static/src/img/spideman.jpg);
+    background-size: 100% 100%;
+
+    .o_database_list {
+        margin-top: 140px;
+    }
+    #login, #password {
+        color: cyan;
+    }
+    label {
+        color: gold;
+    }
+}

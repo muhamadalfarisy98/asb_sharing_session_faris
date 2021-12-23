@@ -11,7 +11,7 @@
     'external_dependencies': {
          #'python': ['pyjwt','simplejson'],
     },
-    'depends': ['base','product', 'asb_sharing_session_faris'],
+    'depends': ['web','base','product', 'asb_sharing_session_faris'],
     'data': [
             'security/ir.model.access.csv',
             'views/refresh_token.xml',

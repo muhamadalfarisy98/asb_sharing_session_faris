@@ -1,0 +1,73 @@
+
+.o_form_view {
+    .o_notebook > .o_notebook_headers > .nav.nav-tabs > .nav-item > .nav-link.active {
+        background-color: $velo-gold-cmyk;
+        color: rgb(255, 255, 255);
+
+        &:focus {
+            color: rgb(255, 255, 255);
+        }
+    }
+}
+
+.btn-fill-primary,
+.btn-primary {
+    background-color: $velo-gold-cmyk;
+    border-color: $velo-gold-cmyk;
+
+    &:hover,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        background-color: $velo-gold;
+        border-color: $velo-gold;
+    }
+
+}
+
+// reference home_menu.scss
+.o_home_menu {
+
+    .o_apps .o_app .o_caption {
+        color: $o-brand-primary;
+        font-weight: 300;
+    }
+
+    .o_menuitems .o_menuitem {
+        color: lighten(black, 15%);
+
+        &:hover,
+        &:focus,
+        &.o_focused {
+            color: $velo-blue;
+            .o_menuitem_parents {
+                color: black;
+            }
+        }
+
+        &:focus,
+        &.o_focused {
+            background-color: rgba(black, 0.05);
+        }
+
+        .o_menuitem_parents {
+            color: darken(black, 15%);
+        }
+    }
+
+    .o_no_result {
+        color: $velo-blue;
+        font-size: 22px;
+    }
+}
+
+// reference web_enterprise/../menu_search.scss
+.o_home_menu .o_menu_search {
+    background-color: $velo-gray;
+}
+
+// reference home_menu_layout.scss
+.o_home_menu .o_home_menu_scrollable .o_apps .o_app {
+    @include media-breakpoint-up(md) {
+        width: percentage(1/4);
+    }
+}

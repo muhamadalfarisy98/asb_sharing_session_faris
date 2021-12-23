@@ -1,0 +1,23 @@
+// velo rgb color variable
+$velo-blue: rgb(0, 50, 85);
+$velo-gold: rgb(186, 154, 96);
+$velo-green: rgb(78, 144, 38);
+$velo-white: rgb(255, 255, 255);
+$velo-gray: rgb(121, 123, 121);
+$velo-black: rgb(0, 0, 0);
+
+// convert cmyk colors to rgb
+@function cmyk_to_rgb($c, $m, $y, $k:0){
+    $r : 255 * (1 - $c / 100) * (1 - $k / 100);
+    $g : 255 * (1 - $m / 100) * (1 - $k / 100);
+    $b : 255 * (1 - $y / 100) * (1 - $k / 100);
+    @return rgb($r,$g,$b);
+}
+
+// velo cmyk color variable
+$velo-gold-cmyk: cmyk_to_rgb(0, 8, 47, 23);
+$velo-blue-cmyk: cmyk_to_rgb(100, 72, 0, 32);
+$velo-green-cmyk: cmyk_to_rgb(60, 0, 100, 10);
+$velo-black-cmyk: cmyk_to_rgb(0, 0, 0, 100);
+$velo-gray-cmyk: cmyk_to_rgb(0, 0, 0, 45);
+$velo-white-cmyk: cmyk_to_rgb(0, 0, 0, 0);

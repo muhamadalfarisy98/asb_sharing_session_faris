@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- menu root  -->
+        <menuitem id="menu_root_toko" name="Bookstore" sequence="1"
+            web_icon="asb_sharing_session_faris_2,static/description/icon.png"/>
+        
+        <!-- MENU bookstrore  -->
+        <menuitem id="menu_toko_buku" name="Bookstore" parent="menu_root_toko" sequence="2"
+            action="toko_buku_action"/>
+        
+        
+    </data>
+</odoo>

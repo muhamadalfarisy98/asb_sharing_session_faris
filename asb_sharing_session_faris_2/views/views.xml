@@ -1,0 +1,110 @@
+<odoo>
+  <data>
+    <!-- toko.buku tree view -->
+    <record id="toko_buku_view_tree" model="ir.ui.view">
+      <field name="name">toko.buku.view.tree</field>
+      <field name="model">toko.buku</field>
+      <field name="arch" type="xml">
+        <tree sample="1">
+          <field name="name"/>
+          <field name="alamat"/>
+          <field name="contact"/>
+          <field name="pemilik"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- toko.buku form view -->
+    <record id="tko_buku_view_form" model="ir.ui.view">
+      <field name="name">toko.buku.view.form</field>
+      <field name="model">toko.buku</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <header>
+            <button name="get_parsing_buku" type="object" string="Get Buku" class="oe_highlight"/>
+          </header>
+          <sheet>
+            <group>
+                <group>
+                  <field name="name" required="1"/>
+                  <field name="pemilik" required="1"/>
+                  <field name="alamat"/>
+                  
+                </group>
+                <group>
+                  <field name="contact"/>
+                  <label for="pajak"/>
+                  <div class="d-flex">
+                      <field name="pajak"/><span class="ml-3">%</span>
+                  </div>
+                  <label for="discount"/>
+                  <div class="d-flex">
+                      <field name="discount"/><span class="ml-3">%</span>
+                  </div>
+                </group>
+            </group>
+            <notebook>
+              <page string="Daftar Buku" name="">
+                <field name="buku_line">
+                  <tree>
+                      <control>
+                          <create name="add_control_line" string="New Books"/>
+                      </control>
+                      <field name="name"/>
+                      <field name="description"/>
+                      <field name="release_year"/>
+                      <field name="total_page"/>
+                      <field name="thickness"/>
+                      <field name="price"/>
+                      <field name="price_taxed"/>
+                      <field name="price_discount"/>
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids"/>
+              <field name="activity_ids"/>
+              <field name="message_ids"/>
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <!-- toko.buku action window -->
+    <record id="toko_buku_action" model="ir.actions.act_window">
+      <field name="name">Bookstore</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">toko.buku</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- buku.buku form view -->
+    <record id="buku_buku_view_form" model="ir.ui.view">
+      <field name="name">buku.buku.view.form</field>
+      <field name="model">buku.buku</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="release_year"/>
+              </group>
+              <group>
+                <field name="price"/>
+                <field name="total_page"/>
+                <field name="thickness"/>
+                <field name="toko_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

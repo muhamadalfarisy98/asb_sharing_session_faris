@@ -1,0 +1,29 @@
+// reference web/static/src/scss/navbar.scss
+.o_main_navbar {
+    background-color: $velo-blue;
+
+    > a,
+    > button {
+        &:hover {
+            background-color: pink;
+            color: inherit;
+        }
+        &:focus {
+            background-color: $velo-blue;
+            color: inherit;
+        }
+    }
+
+    > ul > li > a,
+    > ul > li > label {
+        &:hover {
+            background-color: pink;
+            color: inherit;
+        }
+    }
+
+    .show .dropdown-toggle {
+        background-color: pink;
+    }
+
+}

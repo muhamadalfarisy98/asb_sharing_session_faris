@@ -5,7 +5,7 @@ from odoo.http import request, route
 from odoo import http
 
 class ProductProduct(models.Model):
-    _inherit = 'product.product'
+    _inherit = 'product.template'
 
     def get_image_url(self, product_id):
         product = self.search([('id','=',product_id)])
@@ -17,7 +17,8 @@ class ProductProduct(models.Model):
         if not product.image_1920:
             image_url = ""
         else:
-            base_url = 'http://192.168.1.7:8069/'
+            # base_url = 'http://10.0.2.2:8069/'
+            base_url = 'http://192.168.1.7:8000/'
             try:
                 image_url = base_url + 'web/image?model=' + self._name + '&id=' + str(
                     product.id) + '&field=' + 'image_1920' + '&session_id=' + http.request.session.sid

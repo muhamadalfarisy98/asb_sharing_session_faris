@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_asb_sharing_session_faris_2_toko_buku,asb_sharing_session_faris_2.toko_buku,model_toko_buku,base.group_user,1,1,1,1
+access_asb_sharing_session_faris_2_buku_buku,asb_sharing_session_faris_2.buku_buku,model_buku_buku,base.group_user,1,1,1,1

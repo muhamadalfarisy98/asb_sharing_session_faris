@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <template id="_asset_backend_helpers" inherit_id = "web._assets_backend_helpers">
+        <!-- mencari link stylesheet terakhir -->
+        <xpath expr="//link[last()]" position="after">
+            <!-- isi scssnya -->
+            <!-- sytling warna -->
+            <link rel="stylesheet" type="text/scss" href="/asb_web_custom/static/src/scss/variable_helper.scss"/>
+        </xpath>
+    </template>
+    <!-- perlu didefine keduanya agar masuk deklarasi variable warnanya -->
+    <template id="_asset_helpers" inherit_id="web._assets_helpers">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/asb_web_custom/static/src/scss/variable_helper.scss"/>
+        </xpath>
+    </template>
+
+    <template id="asset_common" inherit_id="web_enterprise.assets_common">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/asb_web_custom/static/src/scss/web_ui.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/asb_web_custom/static/src/scss/web_navbar.scss"/>
+        </xpath>
+    </template>
+
+    <template id="webclient_login" inherit_id="web.login_layout">
+        <xpath expr="//t[@t-call='web.frontend_layout']/t[last()]" position="after">
+            <t t-set="body_classname" t-value="'custom_login_background'"/>
+            <t t-set="login_card_classes" t-value="'rounded-0 shadow-sm bg-white'"/>
+        </xpath>
+    </template>
+
+    <menuitem id="menu_root_web" name="Web custom" sequence="1"
+            web_icon="asb_web_custom,static/description/icon.png"/>
+        
+
+</odoo>
